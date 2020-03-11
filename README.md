@@ -152,8 +152,104 @@ https://myanimelist.net/news/58244750
 
 ```
 
-## To implement
-* Tests
+### Season
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/nokusukun/jikan2go/season"
+)
+
+
+func main() {
+
+    // Print 5 anime shows that aired on summer 2019
+    summer2019, err := season.GetSeason(season.Summer, 2019)
+    if err != nil {
+        panic(err)
+    }
+
+    for _, a := range summer2019.Anime[:5] {
+        fmt.Println("Title:", a.Title)
+        fmt.Println("Rating:", a.Score, "\n---")
+    }
+}
+```
+Output
+```
+Title: Dr. Stone
+Rating: 8.46
+---
+Title: Enen no Shouboutai
+Rating: 7.78
+---
+Title: Vinland Saga
+Rating: 8.78
+---
+Title: Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka II
+Rating: 7.31
+---
+Title: Arifureta Shokugyou de Sekai Saikyou
+Rating: 6.52
+---
+
+```
+
+## Integration Status
+* Package Testing
+    * Working On
+        * anime/anime
+    * TBI
+        * anime/character_staff
+        * anime/episodes
+        * anime/recommendations
+        * anime/search
+        * anime/videos
+        * character/character
+        * common/genre
+        * common/news
+        * common/pictures
+        * common/reviews
+        * common/stats
+* Common
+    * Implemented
+        * review
+        * genre
+        * news
+        * pictures
+        * stats
+* Anime
+    * Implemented
+        * character_staff
+        * episodes
+        * recommendations
+        * search
+        * videos
+    * Back Burner
+        * forum
+        * more info
+        * user updates
+* Manga
+    * Implemented
+        * characters
+        * recommendations
+        * search
+    * Back Burner
+        * forum
+        * more info
+        * user updates
+* Person
+    * Implemented
+        * pictures
+* Characters
+    * Implemented
+        * pictures
+* Season
+* Schedule
+
+### To Be implemented
 * Top
 * Genre
 * Producer

@@ -30,7 +30,7 @@ func GetSeasonLater() (Season, error) {
 }
 
 func GetSeason(season S, year int) (Season, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/%v/%v", season, year))
+	request, err := req.Get(utils.Contstants.AppendAPIf("/season/%v/%v", year, season))
 	if err != nil {
 		return Season{}, err
 	}
@@ -57,13 +57,13 @@ type AnimeElement struct {
 	ImageURL    string         `json:"image_url"`
 	Synopsis    string         `json:"synopsis"`
 	Type        anime.Type     `json:"type"`
-	AiringStart *string        `json:"airing_start"`
-	Episodes    *int64         `json:"episodes"`
+	AiringStart string         `json:"airing_start"`
+	Episodes    int64          `json:"episodes"`
 	Members     int64          `json:"members"`
 	Genres      []common.Genre `json:"genres"`
 	Source      Source         `json:"source"`
 	Producers   []common.Genre `json:"producers"`
-	Score       *float64       `json:"score"`
+	Score       float64        `json:"score"`
 	Licensors   []string       `json:"licensors"`
 	R18         bool           `json:"r18"`
 	Kids        bool           `json:"kids"`

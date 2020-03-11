@@ -124,6 +124,7 @@ func main() {
 
     fmt.Println("Title:", firstResult.Title)
     fmt.Println("Link:", firstResult.URL)
+    fmt.Println("Members:", firstResult.Members)
 
 
     madeInAbyss, _ := anime.GetAnime(firstResult)
@@ -140,6 +141,7 @@ Output
 ```
 Title: Made in Abyss
 Link: https://myanimelist.net/anime/34599/Made_in_Abyss
+Members: 614368
 Made in Abyss Author:  Tsukushi, Akihito
 
 ---

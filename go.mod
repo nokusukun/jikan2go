@@ -1,4 +1,4 @@
-module github.com/nokusukun/Jikan2Go
+module github.com/nokusukun/jikan2go
 
 go 1.14
 

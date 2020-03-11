@@ -1,11 +1,12 @@
-# Jikan2Go
+# jikan2go
 --
 A more go-like library for [Jikan](https://jikan.moe/).
 
 ### Download
 ```
-$ go get github.com/nokusukun/Jikan2Go
+$ go get github.com/nokusukun/jikan2go
 ```
+Word of warning: This API doesn't do rate limiting yet.
 
 ## Usage
 
@@ -17,12 +18,12 @@ package main
 import (
     "fmt"
 
-    "github.com/nokusukun/Jikan2Go/anime"
-    "github.com/nokusukun/Jikan2Go/utils"
+    "github.com/nokusukun/jikan2go/anime"
+    "github.com/nokusukun/jikan2go/utils"
 )
 
 func init()  {
-    utils.Contstants.API = "https://jikan.noku.pw/v3"   // All of Jikan2Go API calls will now use
+    utils.Contstants.API = "https://jikan.noku.pw/v3"   // All of jikan2go API calls will now use
                                                         // jikan.noku.pw instead of api.jikan.moe    
 }
 ```
@@ -31,14 +32,14 @@ func init()  {
 ### Anime/Manga
 
 #### Searching
-Searching in Jikan2Go fully implements [Jikan's Search Parameters](https://jikan.docs.apiary.io/#reference/0/search/genre-request-example+schema?console=1)
+Searching in jikan2go fully implements [Jikan's Search Parameters](https://jikan.docs.apiary.io/#reference/0/search/genre-request-example+schema?console=1)
 ```go
 package main
 
 import (
     "fmt"
 
-    "github.com/nokusukun/Jikan2Go/anime"
+    "github.com/nokusukun/jikan2go/anime"
 )
 
 func main() {
@@ -113,9 +114,9 @@ package main
 import (
     "fmt"
 
-    "github.com/nokusukun/Jikan2Go/anime"
-    "github.com/nokusukun/Jikan2Go/common"
-    "github.com/nokusukun/Jikan2Go/manga"
+    "github.com/nokusukun/jikan2go/anime"
+    "github.com/nokusukun/jikan2go/common"
+    "github.com/nokusukun/jikan2go/manga"
 )
 
 func main() {

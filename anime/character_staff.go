@@ -1,76 +1,77 @@
 package anime
 
 import (
-    "github.com/imroc/req"
+	"github.com/imroc/req"
 
-    "github.com/nokusukun/Jikan2Go/common"
-    "github.com/nokusukun/Jikan2Go/utils"
+	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetCharacterStaff(m common.MALItem) (CharacterStaff, error) {
-    request, err := req.Get(utils.Contstants.AppendAPIf("/anime/%v/characters_staff", m.GetID()))
-    if err != nil {
-        return CharacterStaff{}, err
-    }
+	request, err := req.Get(utils.Contstants.AppendAPIf("/anime/%v/characters_staff", m.GetID()))
+	if err != nil {
+		return CharacterStaff{}, err
+	}
 
-    var a CharacterStaff
-    err = request.ToJSON(&a)
+	var a CharacterStaff
+	err = request.ToJSON(&a)
 
-    return a, err
+	return a, err
 }
 
-
 type CharacterStaff struct {
-    RequestHash        string      `json:"request_hash"`
-    RequestCached      bool        `json:"request_cached"`
-    RequestCacheExpiry int64       `json:"request_cache_expiry"`
-    Characters         []Character `json:"characters"`
-    Staff              []Staff     `json:"staff"`
+	RequestHash        string      `json:"request_hash"`
+	RequestCached      bool        `json:"request_cached"`
+	RequestCacheExpiry int64       `json:"request_cache_expiry"`
+	Characters         []Character `json:"characters"`
+	Staff              []Staff     `json:"staff"`
 }
 
 type Character struct {
-    MalID       int64   `json:"mal_id"`
-    URL         string  `json:"url"`
-    ImageURL    string  `json:"image_url"`
-    Name        string  `json:"name"`
-    Role        Role    `json:"role"`
-    VoiceActors []Staff `json:"voice_actors"`
+	MalID       int64   `json:"mal_id"`
+	URL         string  `json:"url"`
+	ImageURL    string  `json:"image_url"`
+	Name        string  `json:"name"`
+	Role        Role    `json:"role"`
+	VoiceActors []Staff `json:"voice_actors"`
 }
 
 type Staff struct {
-    MalID     int64     `json:"mal_id"`
-    Name      string    `json:"name"`
-    URL       string    `json:"url"`
-    ImageURL  string    `json:"image_url"`
-    Language  *Language `json:"language,omitempty"`
-    Positions []string  `json:"positions"`
+	MalID     int64     `json:"mal_id"`
+	Name      string    `json:"name"`
+	URL       string    `json:"url"`
+	ImageURL  string    `json:"image_url"`
+	Language  *Language `json:"language,omitempty"`
+	Positions []string  `json:"positions"`
 }
 
 type Role string
+
 const (
-    Main Role = "Main"
-    Supporting Role = "Supporting"
+	Main       Role = "Main"
+	Supporting Role = "Supporting"
 )
 
 type Language string
+
 const (
-    English Language = "English"
-    German Language = "German"
-    Japanese Language = "Japanese"
+	English  Language = "English"
+	German   Language = "German"
+	Japanese Language = "Japanese"
 )
 
 func (r Character) GetID() int64 {
-    return r.MalID
+	return r.MalID
 }
 
 func (r Character) GetType() string {
-    return "character"
+	return "character"
 }
 
 func (r Staff) GetID() int64 {
-    return r.MalID
+	return r.MalID
 }
 
 func (r Staff) GetType() string {
-    return "person"
+	return "person"
 }

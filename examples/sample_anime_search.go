@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/nokusukun/Jikan2Go/anime"
-	"github.com/nokusukun/Jikan2Go/common"
-	"github.com/nokusukun/Jikan2Go/manga"
+	"github.com/nokusukun/jikan2go/anime"
+	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/manga"
 )
 
 func main() {

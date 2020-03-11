@@ -9,7 +9,7 @@ import (
 func main() {
 
 	// Print 5 anime shows that aired on summer 2019
-	summer2019, err := season.GetSeason(season.Summer, 2019)
+	summer2019, err := season.GetSeason(season.Summer, 2019) // using 'summer' instead of season.Summer works as well
 	if err != nil {
 		panic(err)
 	}

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d46d42f-35d4-4625-a740-8dbfdb62c291" name="Default Changelist" comment="" />
+    <list default="true" id="4d46d42f-35d4-4625-a740-8dbfdb62c291" name="Default Changelist" comment="fix(refactor): changed all of the references to the package name to use&#10;the lower case version of the package name">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/anime_season.go" beforeDir="false" afterPath="$PROJECT_DIR$/examples/anime_season.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +20,23 @@
     </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1YzEa6GlLAfou7blbFtMRZy2m5b" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples/anime_by_id.go" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -33,6 +44,7 @@
       <recent name="$PROJECT_DIR$/common" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\Jikan2Go\examples" />
       <recent name="C:\Projects\Jikan2Go\manga" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -99,6 +111,23 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix(readme): Fixed some examples" />
+    <MESSAGE value="fix(refactor): changed all of the references to the package name to use&#10;the lower case version of the package name" />
+    <MESSAGE value="fix(season): fixed non working season endpoint&#10;add(documentation): added additional documentation on API usage" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(season): fixed non working season endpoint&#10;add(documentation): added additional documentation on API usage" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

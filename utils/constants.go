@@ -1,21 +1,27 @@
 package utils
 
 import (
-    "fmt"
+	"fmt"
+	"os"
+	"time"
 )
 
 type constants struct {
-    API string
+	API           string
+	CacheDir      string
+	CacheLifetime time.Duration
 }
 
-var Contstants constants
+var Constants constants
 
 func init() {
-    Contstants = constants{
-        API: "https://api.jikan.moe/v3",
-    }
+	Constants = constants{
+		API:           "https://api.jikan.moe/v3",
+		CacheDir:      os.TempDir(),
+		CacheLifetime: time.Minute * 30,
+	}
 }
 
-func (c *constants) AppendAPIf(endpoint string, values... interface{}) string {
-    return fmt.Sprintf("%v%v", c.API, fmt.Sprintf(endpoint, values...))
+func (c *constants) AppendAPIf(endpoint string, values ...interface{}) string {
+	return fmt.Sprintf("%v%v", c.API, fmt.Sprintf(endpoint, values...))
 }

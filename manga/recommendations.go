@@ -8,7 +8,7 @@ import (
 )
 
 func GetRecommendations(m common.MALItem) (Recommendations, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/manga/%v/recommendations", m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/manga/%v/recommendations", m.GetID()))
 	if err != nil {
 		return Recommendations{}, err
 	}

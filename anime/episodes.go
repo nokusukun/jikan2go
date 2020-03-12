@@ -1,14 +1,12 @@
 package anime
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetEpisodes(m common.MALItem) (Episodes, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/anime/%v/episodes", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v/episodes", m.GetID()))
 	if err != nil {
 		return Episodes{}, err
 	}

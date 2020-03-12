@@ -8,7 +8,7 @@ import (
 )
 
 func GetCharacter(m common.MALItem) (Character, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/character/%v", m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/character/%v", m.GetID()))
 	if err != nil {
 		return Character{}, err
 	}

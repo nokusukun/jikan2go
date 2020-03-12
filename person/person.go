@@ -8,7 +8,7 @@ import (
 )
 
 func GetPerson(m common.MALItem) (Person, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/person/%v", m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/person/%v", m.GetID()))
 	if err != nil {
 		return Person{}, err
 	}

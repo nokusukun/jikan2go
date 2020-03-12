@@ -7,7 +7,7 @@ import (
 )
 
 func GetReviews(m MALItem) (Reviews, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/%v/%v/reviews", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/reviews", m.GetType(), m.GetID()))
 	if err != nil {
 		return Reviews{}, err
 	}

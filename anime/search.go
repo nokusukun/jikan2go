@@ -13,7 +13,7 @@ func Search(q Query) (SearchResult, error) {
 		q.Page = 1
 	}
 
-	request, err := req.Get(utils.Contstants.AppendAPIf("/search/anime"), q.ToParam())
+	request, err := req.Get(utils.Constants.AppendAPIf("/search/anime"), q.ToParam())
 	if err != nil {
 		return SearchResult{}, err
 	}

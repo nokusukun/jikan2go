@@ -30,7 +30,7 @@ func init()  {
 ***Note: Make sure to remove the trailing slash when specifying a new API endpoint.***
 
 ### Anime/Manga
-
+#### Retrieve
 #### Searching
 Searching in jikan2go fully implements [Jikan's Search Parameters](https://jikan.docs.apiary.io/#reference/0/search/genre-request-example+schema?console=1)
 ```go
@@ -222,6 +222,7 @@ Rating: 6.52
         * stats
 * Anime
     * Implemented
+        * **Request caching**
         * character_staff
         * episodes
         * recommendations
@@ -248,12 +249,17 @@ Rating: 6.52
         * pictures
 * Season
 * Schedule
-
-### To Be implemented
 * Top
+    * Anime
+    * Manga
+    * Person
+    * Character
 * Genre
 * Producer
 * Magazine
+
+### To Be implemented
+* ~~Request Caching~~
 * User
 * Club
 * Meta

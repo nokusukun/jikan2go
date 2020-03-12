@@ -7,7 +7,7 @@ import (
 )
 
 func GetNews(m MALItem) (News, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/%v/%v/news", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/news", m.GetType(), m.GetID()))
 	if err != nil {
 		return News{}, err
 	}

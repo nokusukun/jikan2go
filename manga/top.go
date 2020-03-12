@@ -7,7 +7,7 @@ import (
 )
 
 func GetTop(page int, subtype SubType) (Top, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/top/manga/%v/%v", page, subtype))
+	request, err := req.Get(utils.Constants.AppendAPIf("/top/manga/%v/%v", page, subtype))
 	if err != nil {
 		return Top{}, err
 	}

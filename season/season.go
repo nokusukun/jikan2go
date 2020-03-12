@@ -18,7 +18,7 @@ const (
 )
 
 func GetSeasonLater() (Season, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/season/later"))
+	request, err := req.Get(utils.Constants.AppendAPIf("/season/later"))
 	if err != nil {
 		return Season{}, err
 	}
@@ -30,7 +30,7 @@ func GetSeasonLater() (Season, error) {
 }
 
 func GetSeason(season S, year int) (Season, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/season/%v/%v", year, season))
+	request, err := req.Get(utils.Constants.AppendAPIf("/season/%v/%v", year, season))
 	if err != nil {
 		return Season{}, err
 	}

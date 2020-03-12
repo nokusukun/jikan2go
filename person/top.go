@@ -7,7 +7,7 @@ import (
 )
 
 func GetTop(page int) (Top, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/top/people/%v", page))
+	request, err := req.Get(utils.Constants.AppendAPIf("/top/people/%v", page))
 	if err != nil {
 		return Top{}, err
 	}

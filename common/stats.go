@@ -7,7 +7,7 @@ import (
 )
 
 func GetStats(m MALItem) (Stats, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/%v/%v/stats", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/stats", m.GetType(), m.GetID()))
 	if err != nil {
 		return Stats{}, err
 	}

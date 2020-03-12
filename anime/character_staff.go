@@ -1,14 +1,12 @@
 package anime
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetCharacterStaff(m common.MALItem) (CharacterStaff, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/anime/%v/characters_staff", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v/characters_staff", m.GetID()))
 	if err != nil {
 		return CharacterStaff{}, err
 	}

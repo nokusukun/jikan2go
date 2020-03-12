@@ -1,15 +1,13 @@
 package anime
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 // GetAnime returns a canonical Anime Object
 func GetAnime(m common.MALItem) (Anime, error) {
-	request, err := req.Get(utils.Contstants.AppendAPIf("/anime/%v", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v", m.GetID()))
 	if err != nil {
 		return Anime{}, err
 	}
@@ -20,7 +18,7 @@ func GetAnime(m common.MALItem) (Anime, error) {
 	return a, err
 }
 
-// A single anime object with all its details
+// A single anime object with all its canonical details
 type Anime struct {
 	RequestHash        string        `json:"request_hash"`
 	RequestCached      bool          `json:"request_cached"`
@@ -99,6 +97,7 @@ type Related struct {
 	Summary    []MALItem `json:"Summary"`
 }
 
+//noinspection ALL
 const (
 	TManga Type = "manga"
 	TAnime Type = "anime"

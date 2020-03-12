@@ -9,7 +9,7 @@ import (
 )
 
 func GetManga(genre manga.MangaGenre, page int) (MangaGenre, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/genre/manga/%v/%v", genre, page))
+	request, err := req.Get(utils.Config.AppendAPIf("/genre/manga/%v/%v", genre, page))
 	if err != nil {
 		return MangaGenre{}, err
 	}

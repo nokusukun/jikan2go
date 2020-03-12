@@ -30,7 +30,7 @@ func hash(s string) string {
 }
 
 func cacheExists(reqHash string) bool {
-	data, _ := os.Stat(path.Join(Constants.CacheDir, reqHash))
+	data, _ := os.Stat(path.Join(Config.CacheDir, reqHash))
 	return data != nil
 }
 
@@ -39,7 +39,7 @@ func writeCache(reqHash string, request *CachedRequest) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(path.Join(Constants.CacheDir, reqHash), b, os.ModePerm)
+	return ioutil.WriteFile(path.Join(Config.CacheDir, reqHash), b, os.ModePerm)
 }
 
 func readCache(reqhash string) (*CachedRequest, error) {
@@ -48,7 +48,7 @@ func readCache(reqhash string) (*CachedRequest, error) {
 	}
 
 	cr := &CachedRequest{}
-	b, err := ioutil.ReadFile(path.Join(Constants.CacheDir, reqhash))
+	b, err := ioutil.ReadFile(path.Join(Config.CacheDir, reqhash))
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +58,7 @@ func readCache(reqhash string) (*CachedRequest, error) {
 }
 
 func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
-	requestHash := hash(strings.ReplaceAll(url, Constants.API, ""))
+	requestHash := hash(strings.ReplaceAll(url, Config.API, ""))
 
 	cr := &CachedRequest{}
 	if !cacheExists(requestHash) {
@@ -97,7 +97,7 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 		return nil, err
 	}
 
-	if time.Now().Sub(cache.RequestedOn) > Constants.CacheLifetime {
+	if time.Now().Sub(cache.RequestedOn) > Config.CacheLifetime {
 		v = append(v, req.Header{
 			"If-None-Match": cache.ETag,
 		})

@@ -7,7 +7,7 @@ import (
 )
 
 func GetPictures(m MALItem) (Pictures, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/pictures", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Config.AppendAPIf("/%v/%v/pictures", m.GetType(), m.GetID()))
 	if err != nil {
 		return Pictures{}, err
 	}

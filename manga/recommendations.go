@@ -6,7 +6,7 @@ import (
 )
 
 func GetRecommendations(m common.MALItem) (Recommendations, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/manga/%v/recommendations", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/manga/%v/recommendations", m.GetID()))
 	if err != nil {
 		return Recommendations{}, err
 	}

@@ -7,7 +7,7 @@ import (
 )
 
 func GetInfo(m MALItem) (Info, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/moreinfo", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Config.AppendAPIf("/%v/%v/moreinfo", m.GetType(), m.GetID()))
 	if err != nil {
 		return Info{}, err
 	}

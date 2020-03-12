@@ -20,7 +20,7 @@ const (
 )
 
 func GetSchedule(day Day) (Schedule, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/schedule/%v", day))
+	request, err := req.Get(utils.Config.AppendAPIf("/schedule/%v", day))
 	if err != nil {
 		return Schedule{}, err
 	}

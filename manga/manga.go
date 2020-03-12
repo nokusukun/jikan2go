@@ -7,7 +7,7 @@ import (
 )
 
 func GetManga(m common.MALItem) (Manga, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/manga/%v", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/manga/%v", m.GetID()))
 	if err != nil {
 		return Manga{}, err
 	}

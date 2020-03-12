@@ -23,11 +23,11 @@ import (
 )
 
 func init()  {
-    utils.Contstants.API = "https://jikan.noku.pw/v3"   // All of jikan2go API calls will now use
+    utils.Config.API = "https://jikan.noku.pw/v3"   // All of jikan2go API calls will now use
                                                         // jikan.noku.pw instead of api.jikan.moe    
     
-    utils.Constants.CacheDir = "~/.jikan/"  //change where cache files are stored (default: os.TempDir())
-    utils.Constants.CacheLifetime = time.hour * 1 // change the cache lifetime before 
+    utils.Config.CacheDir = "~/.jikan/"  //change where cache files are stored (default: os.TempDir())
+    utils.Config.CacheLifetime = time.hour * 1 // change the cache lifetime before 
                                                   // requesting data from the remote resource. (default 30 minutes)                
         
 }

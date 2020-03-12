@@ -12,7 +12,7 @@ import (
 // Get studio retrieves the canonical data of a Studio, ensure that the MALItem you're using as an argument
 // is a studio, or else incorrect data may be returned.
 func GetStudio(m common.MALItem, page int) (Studio, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/producer/%v/%v", m.GetID(), page))
+	request, err := req.Get(utils.Config.AppendAPIf("/producer/%v/%v", m.GetID(), page))
 	if err != nil {
 		return Studio{}, err
 	}

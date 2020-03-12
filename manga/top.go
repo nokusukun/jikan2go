@@ -5,7 +5,7 @@ import (
 )
 
 func GetTop(page int, subtype SubType) (Top, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/top/manga/%v/%v", page, subtype))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/top/manga/%v/%v", page, subtype))
 	if err != nil {
 		return Top{}, err
 	}

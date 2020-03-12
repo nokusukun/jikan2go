@@ -7,7 +7,7 @@ import (
 )
 
 func GetForum(m MALItem) (Forum, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/%v/%v/forum", m.GetType(), m.GetID()))
+	request, err := req.Get(utils.Config.AppendAPIf("/%v/%v/forum", m.GetType(), m.GetID()))
 	if err != nil {
 		return Forum{}, err
 	}

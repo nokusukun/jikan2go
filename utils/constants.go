@@ -12,10 +12,10 @@ type constants struct {
 	CacheLifetime time.Duration
 }
 
-var Constants constants
+var Config constants
 
 func init() {
-	Constants = constants{
+	Config = constants{
 		API:           "https://api.jikan.moe/v3",
 		CacheDir:      os.TempDir(),
 		CacheLifetime: time.Minute * 30,

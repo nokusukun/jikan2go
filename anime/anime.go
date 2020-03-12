@@ -8,7 +8,7 @@ import (
 
 // GetAnime returns a canonical Anime Object
 func GetAnime(m common.MALItem) (Anime, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v", m.GetID()))
 	if err != nil {
 		return Anime{}, err
 	}

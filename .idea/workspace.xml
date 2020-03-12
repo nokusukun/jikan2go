@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d46d42f-35d4-4625-a740-8dbfdb62c291" name="Default Changelist" comment="feat(documentation): added pkg.go.dev documentation link">
+    <list default="true" id="4d46d42f-35d4-4625-a740-8dbfdb62c291" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/anime/anime_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/anime_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/anime.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/anime.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/character_staff.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/character_staff.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/episodes.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/episodes.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/recommendations.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/recommendations.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/anime/top.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/top.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/anime/videos.go" beforeDir="false" afterPath="$PROJECT_DIR$/anime/videos.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/character/character.go" beforeDir="false" afterPath="$PROJECT_DIR$/character/character.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/character/top.go" beforeDir="false" afterPath="$PROJECT_DIR$/character/top.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/forum.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/forum.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/more.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/more.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/news.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/news.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pictures.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/pictures.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/reviews.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/reviews.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/stats.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/stats.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genre/anime_genre.go" beforeDir="false" afterPath="$PROJECT_DIR$/genre/anime_genre.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/genre/manga_genre.go" beforeDir="false" afterPath="$PROJECT_DIR$/genre/manga_genre.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/characters.go" beforeDir="false" afterPath="$PROJECT_DIR$/manga/characters.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/manga.go" beforeDir="false" afterPath="$PROJECT_DIR$/manga/manga.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/recommendations.go" beforeDir="false" afterPath="$PROJECT_DIR$/manga/recommendations.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/search.go" beforeDir="false" afterPath="$PROJECT_DIR$/manga/search.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manga/top.go" beforeDir="false" afterPath="$PROJECT_DIR$/manga/top.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/person/person.go" beforeDir="false" afterPath="$PROJECT_DIR$/person/person.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/person/top.go" beforeDir="false" afterPath="$PROJECT_DIR$/person/top.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/season/schedule.go" beforeDir="false" afterPath="$PROJECT_DIR$/season/schedule.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/season/season.go" beforeDir="false" afterPath="$PROJECT_DIR$/season/season.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studio/studio.go" beforeDir="false" afterPath="$PROJECT_DIR$/studio/studio.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/cached_requests.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cached_requests.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/constants.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +103,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestAnime_GetID in github.com/nokusukun/jikan2go/anime">
+  <component name="RunManager" selected="Go Test.go test github.com/nokusukun/jikan2go/anime">
     <configuration name="TestAnime_GetID in github.com/nokusukun/jikan2go/anime" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Jikan2Go" />
       <working_directory value="$PROJECT_DIR$/anime" />
@@ -94,15 +122,6 @@
       <pattern value="^TestAnime_GetIDError$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestGetTop in github.com/nokusukun/jikan2go/manga" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="Jikan2Go" />
-      <working_directory value="$PROJECT_DIR$/manga" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/nokusukun/jikan2go/manga" />
-      <pattern value="^TestGetTop$" />
-      <method v="2" />
-    </configuration>
     <configuration name="TestGetTopSubtype in github.com/nokusukun/jikan2go/manga" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Jikan2Go" />
       <working_directory value="$PROJECT_DIR$/manga" />
@@ -110,6 +129,14 @@
       <kind value="PACKAGE" />
       <package value="github.com/nokusukun/jikan2go/manga" />
       <pattern value="^TestGetTopSubtype$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go test github.com/nokusukun/jikan2go/anime" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="Jikan2Go" />
+      <working_directory value="$PROJECT_DIR$/anime" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/nokusukun/jikan2go/anime" />
       <method v="2" />
     </configuration>
     <configuration name="go test github.com/nokusukun/jikan2go/manga" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -122,11 +149,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test github.com/nokusukun/jikan2go/anime" />
         <item itemvalue="Go Test.TestAnime_GetID in github.com/nokusukun/jikan2go/anime" />
         <item itemvalue="Go Test.TestAnime_GetIDError in github.com/nokusukun/jikan2go/anime" />
         <item itemvalue="Go Test.go test github.com/nokusukun/jikan2go/manga" />
         <item itemvalue="Go Test.TestGetTopSubtype in github.com/nokusukun/jikan2go/manga" />
-        <item itemvalue="Go Test.TestGetTop in github.com/nokusukun/jikan2go/manga" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +190,8 @@
     <MESSAGE value="feat(documentation): Updated NOT_IMPLEMENTED" />
     <MESSAGE value="feat(documentation): added pkg.go.dev documentation link" />
     <MESSAGE value="feat(feat/fix): fixed cached_requests jikan error, added tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(feat/fix): fixed cached_requests jikan error, added tests" />
+    <MESSAGE value="feat(test,video): added more coverage tests, added EpisodeInfo for videos" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(test,video): added more coverage tests, added EpisodeInfo for videos" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

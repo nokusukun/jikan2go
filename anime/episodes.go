@@ -6,7 +6,7 @@ import (
 )
 
 func GetEpisodes(m common.MALItem) (Episodes, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v/episodes", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/episodes", m.GetID()))
 	if err != nil {
 		return Episodes{}, err
 	}

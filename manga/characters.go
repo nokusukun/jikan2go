@@ -6,7 +6,7 @@ import (
 )
 
 func GetCharacters(m common.MALItem) (Characters, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/manga/%v/characters", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/manga/%v/characters", m.GetID()))
 	if err != nil {
 		return Characters{}, err
 	}

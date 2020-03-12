@@ -6,7 +6,7 @@ import (
 )
 
 func GetVideos(m common.MALItem) (Videos, error) {
-	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/anime/%v/videos", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/videos", m.GetID()))
 	if err != nil {
 		return Videos{}, err
 	}

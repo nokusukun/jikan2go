@@ -65,7 +65,20 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 
 		data, err := req.Get(url, v...)
 		if err != nil {
+			fmt.Println("Cached Request Get Error:", err)
 			return nil, err
+		}
+		switch data.Response().StatusCode {
+		case 404:
+			return nil, fmt.Errorf("resource not found")
+		case 400:
+			return nil, fmt.Errorf("bad request")
+		case 405:
+			return nil, fmt.Errorf("method not allowed")
+		case 429:
+			return nil, fmt.Errorf("invalid request")
+		case 500:
+			return nil, fmt.Errorf("internal server error")
 		}
 
 		cr.Data = data.Bytes()

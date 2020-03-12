@@ -1,13 +1,11 @@
 package manga
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetTop(page int, subtype SubType) (Top, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/top/manga/%v/%v", page, subtype))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/top/manga/%v/%v", page, subtype))
 	if err != nil {
 		return Top{}, err
 	}

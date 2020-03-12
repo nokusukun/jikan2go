@@ -2,14 +2,12 @@
 package manga
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetManga(m common.MALItem) (Manga, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/manga/%v", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/manga/%v", m.GetID()))
 	if err != nil {
 		return Manga{}, err
 	}

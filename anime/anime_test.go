@@ -12,9 +12,20 @@ func TestAnime_GetID(t *testing.T) {
 
 	MadeInAbyss, err := GetAnime(Anime{MalID: miaID})
 	assert.Nil(t, err)
+	assert.Equal(t, MadeInAbyss.GetType(), "anime")
+	assert.Equal(t, MadeInAbyss.GetID(), miaID)
 	fmt.Println("Title:", MadeInAbyss.Title)
 	fmt.Println("Request Cached?", MadeInAbyss.RequestCached)
 	assert.Equal(t, MadeInAbyss.MalID, miaID)
+}
+
+func TestAnime_GetIDError(t *testing.T) {
+	miaID := int64(2) // Would Error
+
+	MadeInAbyss, err := GetAnime(Anime{MalID: miaID})
+	fmt.Println(err)
+	assert.NotNil(t, err)
+	assert.Equal(t, MadeInAbyss.Title, "")
 }
 
 func TestSearch(t *testing.T) {
@@ -24,7 +35,6 @@ func TestSearch(t *testing.T) {
 			Genre: GenreAdventure,
 		})
 	assert.Nil(t, err)
-
 	assert.Len(t, result.Results, 1, result)
 
 	fmt.Println("Title:", result.Results[0].Title)

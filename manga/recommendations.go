@@ -1,14 +1,12 @@
 package manga
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetRecommendations(m common.MALItem) (Recommendations, error) {
-	request, err := req.Get(utils.Constants.AppendAPIf("/manga/%v/recommendations", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Constants.AppendAPIf("/manga/%v/recommendations", m.GetID()))
 	if err != nil {
 		return Recommendations{}, err
 	}

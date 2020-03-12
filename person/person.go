@@ -27,7 +27,7 @@ type Person struct {
 	MalID               int64                `json:"mal_id"`
 	URL                 string               `json:"url"`
 	ImageURL            string               `json:"image_url"`
-	WebsiteURL          interface{}          `json:"website_url"`
+	WebsiteURL          string               `json:"website_url"`
 	Name                string               `json:"name"`
 	GivenName           string               `json:"given_name"`
 	FamilyName          string               `json:"family_name"`

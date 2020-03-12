@@ -18,7 +18,7 @@ func main() {
 
 	madeInAbyss, _ := anime.GetAnime(firstResult)
 	miaManga, _ := manga.GetManga(madeInAbyss.Related.Adaptation[0])
-	fmt.Println("Made in Abyss Author: ", miaManga.Authors[0].Name)
+	fmt.Println("Made in Abyss MALItem: ", miaManga.Authors[0].Name)
 
 	news, _ := common.GetNews(madeInAbyss)
 	fmt.Println("\n---\nNews related to Made in Abyss")

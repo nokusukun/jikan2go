@@ -19,34 +19,34 @@ func GetManga(m common.MALItem) (Manga, error) {
 }
 
 type Manga struct {
-	RequestHash        string        `json:"request_hash"`
-	RequestCached      bool          `json:"request_cached"`
-	RequestCacheExpiry int64         `json:"request_cache_expiry"`
-	MalID              int64         `json:"mal_id"`
-	URL                string        `json:"url"`
-	Title              string        `json:"title"`
-	TitleEnglish       string        `json:"title_english"`
-	TitleSynonyms      []interface{} `json:"title_synonyms"`
-	TitleJapanese      string        `json:"title_japanese"`
-	Status             string        `json:"status"`
-	ImageURL           string        `json:"image_url"`
-	Type               string        `json:"type"`
-	Volumes            interface{}   `json:"volumes"`
-	Chapters           interface{}   `json:"chapters"`
-	Publishing         bool          `json:"publishing"`
-	Published          Published     `json:"published"`
-	Rank               int64         `json:"rank"`
-	Score              float64       `json:"score"`
-	ScoredBy           int64         `json:"scored_by"`
-	Popularity         int64         `json:"popularity"`
-	Members            int64         `json:"members"`
-	Favorites          int64         `json:"favorites"`
-	Synopsis           string        `json:"synopsis"`
-	Background         string        `json:"background"`
-	Related            Related       `json:"related"`
-	Genres             []Author      `json:"genres"`
-	Authors            []Author      `json:"authors"`
-	Serializations     []Author      `json:"serializations"`
+	RequestHash        string    `json:"request_hash"`
+	RequestCached      bool      `json:"request_cached"`
+	RequestCacheExpiry int64     `json:"request_cache_expiry"`
+	MalID              int64     `json:"mal_id"`
+	URL                string    `json:"url"`
+	Title              string    `json:"title"`
+	TitleEnglish       string    `json:"title_english"`
+	TitleSynonyms      []string  `json:"title_synonyms"`
+	TitleJapanese      string    `json:"title_japanese"`
+	Status             string    `json:"status"`
+	ImageURL           string    `json:"image_url"`
+	Type               string    `json:"type"`
+	Volumes            int64     `json:"volumes"`
+	Chapters           int64     `json:"chapters"`
+	Publishing         bool      `json:"publishing"`
+	Published          Published `json:"published"`
+	Rank               int64     `json:"rank"`
+	Score              float64   `json:"score"`
+	ScoredBy           int64     `json:"scored_by"`
+	Popularity         int64     `json:"popularity"`
+	Members            int64     `json:"members"`
+	Favorites          int64     `json:"favorites"`
+	Synopsis           string    `json:"synopsis"`
+	Background         string    `json:"background"`
+	Related            Related   `json:"related"`
+	Genres             []MALItem `json:"genres"`
+	Authors            []MALItem `json:"authors"`
+	Serializations     []MALItem `json:"serializations"`
 }
 
 func (r Manga) GetID() int64 {
@@ -57,18 +57,18 @@ func (r Manga) GetType() string {
 	return "manga"
 }
 
-type Author struct {
+type MALItem struct {
 	MalID int64  `json:"mal_id"`
 	Type  Type   `json:"type"`
 	Name  string `json:"name"`
 	URL   string `json:"url"`
 }
 
-func (r Author) GetID() int64 {
+func (r MALItem) GetID() int64 {
 	return r.MalID
 }
 
-func (r Author) GetType() string {
+func (r MALItem) GetType() string {
 	return "person"
 }
 
@@ -91,11 +91,11 @@ type From struct {
 }
 
 type Related struct {
-	Other              []Author `json:"Other"`
-	AlternativeVersion []Author `json:"Alternative version"`
-	SideStory          []Author `json:"Side story"`
-	SpinOff            []Author `json:"Spin-off"`
-	Adaptation         []Author `json:"Adaptation"`
+	Other              []MALItem `json:"Other"`
+	AlternativeVersion []MALItem `json:"Alternative version"`
+	SideStory          []MALItem `json:"Side story"`
+	SpinOff            []MALItem `json:"Spin-off"`
+	Adaptation         []MALItem `json:"Adaptation"`
 }
 
 const (

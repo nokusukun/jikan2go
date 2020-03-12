@@ -68,7 +68,9 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 			fmt.Println("Cached Request Get Error:", err)
 			return nil, err
 		}
+
 		switch data.Response().StatusCode {
+
 		case 404:
 			return nil, fmt.Errorf("resource not found")
 		case 400:

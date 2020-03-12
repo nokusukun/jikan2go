@@ -38,7 +38,8 @@ func init()  {
 While the library maintains a cache, it also respects [Jikan's ETag headers.](https://jikan.docs.apiary.io/#introduction/cache-validation)
 
 ### Anime/Manga
-#### Retrieve
+#### pkg.go.dev Documentation
+Can be found [here](https://pkg.go.dev/github.com/nokusukun/jikan2go?tab=overview).
 #### Searching
 Searching in jikan2go fully implements [Jikan's Search Parameters](https://jikan.docs.apiary.io/#reference/0/search/genre-request-example+schema?console=1)
 ```go

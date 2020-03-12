@@ -1,3 +1,4 @@
+// studio implements Jikan's api/studio resources and endpoints
 package studio
 
 import (

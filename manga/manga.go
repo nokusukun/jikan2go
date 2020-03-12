@@ -1,3 +1,4 @@
+// manga implements Jikan's api/manga resources and endpoints
 package manga
 
 import (

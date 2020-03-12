@@ -1,3 +1,4 @@
+// person implements Jikan's api/person resources and endpoints
 package person
 
 import (

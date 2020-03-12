@@ -1,3 +1,4 @@
+// character implements Jikan's api/character resources and endpoints
 package character
 
 import (

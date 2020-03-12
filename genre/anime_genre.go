@@ -1,3 +1,4 @@
+// genre implements Jikan's api/genre resources and endpoints
 package genre
 
 import (

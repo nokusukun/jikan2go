@@ -33,7 +33,6 @@ func TestSearch(t *testing.T) {
 
 func TestGetCharacterStaff(t *testing.T) {
 	miaID := int64(34599)
-
 	MadeInAbyss, err := GetAnime(Anime{MalID: miaID})
 	assert.Nil(t, err)
 

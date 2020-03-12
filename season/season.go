@@ -1,3 +1,4 @@
+// season implements Jikan's api/season resources and endpoints
 package season
 
 import (

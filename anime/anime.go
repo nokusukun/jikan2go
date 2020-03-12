@@ -1,3 +1,4 @@
+// anime contains several key methods and structs for interacting with Jikan's resources and endpoints.
 package anime
 
 import (

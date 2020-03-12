@@ -14,9 +14,17 @@ func TestAnime_GetID(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, MadeInAbyss.GetType(), "anime")
 	assert.Equal(t, MadeInAbyss.GetID(), miaID)
+
 	fmt.Println("Title:", MadeInAbyss.Title)
 	fmt.Println("Request Cached?", MadeInAbyss.RequestCached)
 	assert.Equal(t, MadeInAbyss.MalID, miaID)
+
+	fmt.Println("Studio:", MadeInAbyss.Studios[0].Name)
+	fmt.Println("Studio ID:", MadeInAbyss.Studios[0].GetID())
+	fmt.Println("Studio Type:", MadeInAbyss.Studios[0].GetType())
+
+	assert.NotNil(t, MadeInAbyss.Studios[0].GetID())
+	assert.NotNil(t, MadeInAbyss.Studios[0].GetType())
 }
 
 func TestAnime_GetIDError(t *testing.T) {
@@ -100,4 +108,11 @@ func TestFMAB(t *testing.T) {
 	fma := result.Results[0]
 	fmt.Println("Title:", fma.Title)
 	fmt.Println("Members: ", fma.Members)
+}
+
+func TestGetVideos(t *testing.T) {
+	vids, err := GetVideos(Anime{MalID: 1})
+	assert.Nil(t, err)
+	assert.Greater(t, len(vids.Promo), 0)
+
 }

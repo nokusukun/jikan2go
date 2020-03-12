@@ -18,10 +18,18 @@ func GetVideos(m common.MALItem) (Videos, error) {
 }
 
 type Videos struct {
-	RequestHash        string  `json:"request_hash"`
-	RequestCached      bool    `json:"request_cached"`
-	RequestCacheExpiry int64   `json:"request_cache_expiry"`
-	Promo              []Promo `json:"promo"`
+	RequestHash        string        `json:"request_hash"`
+	RequestCached      bool          `json:"request_cached"`
+	RequestCacheExpiry int64         `json:"request_cache_expiry"`
+	Promo              []Promo       `json:"promo"`
+	Episodes           []EpisodeInfo `json:"episodes"`
+}
+
+type EpisodeInfo struct {
+	Title    string `json:"title"`
+	Episode  string `json:"episode"`
+	URL      string `json:"url"`
+	ImageURL string `json:"image_url"`
 }
 
 type Promo struct {

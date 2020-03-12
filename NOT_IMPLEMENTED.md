@@ -1,4 +1,6 @@
-# Endpoints not implemented
+These endpoints are now supported to some extent.
+
+# ~~Endpoints not implemented~~
 * `/moreinfo`
 * `/forum`
 * `/userupdates`

@@ -3,6 +3,7 @@ package genre
 import (
 	"github.com/imroc/req"
 
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/manga"
 	"github.com/nokusukun/jikan2go/person"
 	"github.com/nokusukun/jikan2go/utils"
@@ -45,10 +46,10 @@ type MangaElement struct {
 	Serialization   []string        `json:"serialization"`
 }
 
-func (r MangaElement) GetID() int64 {
+func (r MangaElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r MangaElement) GetType() string {
-	return "manga"
+	return mal_types.Manga
 }

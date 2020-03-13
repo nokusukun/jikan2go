@@ -1,13 +1,11 @@
 package common
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetStats(m MALItem) (Stats, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/%v/%v/stats", m.GetType(), m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/%v/%v/stats", m.GetType(), m.GetID()))
 	if err != nil {
 		return Stats{}, err
 	}

@@ -2,6 +2,7 @@ package manga
 
 import (
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -33,10 +34,10 @@ type Recommendation struct {
 	RecommendationCount int64  `json:"recommendation_count"`
 }
 
-func (r Recommendation) GetID() int64 {
+func (r Recommendation) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Recommendation) GetType() string {
-	return "manga"
+	return mal_types.Manga
 }

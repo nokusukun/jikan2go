@@ -2,17 +2,16 @@
 package studio
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
 	"github.com/nokusukun/jikan2go/genre"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 // Get studio retrieves the canonical data of a Studio, ensure that the MALItem you're using as an argument
 // is a studio, or else incorrect data may be returned.
 func GetStudio(m common.MALItem, page int) (Studio, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/producer/%v/%v", m.GetID(), page))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/producer/%v/%v", m.GetID(), page))
 	if err != nil {
 		return Studio{}, err
 	}
@@ -50,12 +49,12 @@ type AnimeElement struct {
 	Kids        bool          `json:"kids"`
 }
 
-func (r AnimeElement) GetID() int64 {
+func (r AnimeElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r AnimeElement) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }
 
 type StudioMeta struct {
@@ -65,12 +64,12 @@ type StudioMeta struct {
 	URL   string   `json:"url"`
 }
 
-func (r StudioMeta) GetID() int64 {
+func (r StudioMeta) GetID() interface{} {
 	return r.MalID
 }
 
 func (r StudioMeta) GetType() string {
-	return "studio"
+	return mal_types.Producer
 }
 
 type MetaType string

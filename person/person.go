@@ -2,14 +2,13 @@
 package person
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetPerson(m common.MALItem) (Person, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/person/%v", m.GetID()))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/person/%v", m.GetID()))
 	if err != nil {
 		return Person{}, err
 	}
@@ -40,12 +39,12 @@ type Person struct {
 	PublishedManga      []PublishedManga     `json:"published_manga"`
 }
 
-func (r Person) GetID() int64 {
+func (r Person) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Person) GetType() string {
-	return "person"
+	return mal_types.Person
 }
 
 type PublishedManga struct {
@@ -65,12 +64,12 @@ type Anime struct {
 	Name     string `json:"name"`
 }
 
-func (r Anime) GetID() int64 {
+func (r Anime) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Anime) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }
 
 type Manga struct {
@@ -80,12 +79,12 @@ type Manga struct {
 	Name     string `json:"name"`
 }
 
-func (r Manga) GetID() int64 {
+func (r Manga) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Manga) GetType() string {
-	return "manga"
+	return mal_types.Manga
 }
 
 type Character struct {
@@ -95,12 +94,12 @@ type Character struct {
 	Name     string `json:"name"`
 }
 
-func (r Character) GetID() int64 {
+func (r Character) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Character) GetType() string {
-	return "character"
+	return mal_types.Character
 }
 
 type VoiceActingRole struct {

@@ -3,14 +3,15 @@ package anime
 
 import (
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 // GetAnime returns a canonical Anime Object
 // Return anime with given an interface that has a mal_id.
 // This method parses item data by ID from https://myanimelist.net/anime/{id}
-func GetAnime(m common.MALItem) (Anime, error) {
-	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v", m.GetID()))
+func GetAnime(anime common.MALItem) (Anime, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v", anime.GetID()))
 	if err != nil {
 		return Anime{}, err
 	}
@@ -23,42 +24,42 @@ func GetAnime(m common.MALItem) (Anime, error) {
 
 // A single anime object with all its canonical details
 type Anime struct {
-	RequestHash        string    `json:"request_hash"`
-	RequestCached      bool      `json:"request_cached"`
-	RequestCacheExpiry int64     `json:"request_cache_expiry"`
-	MalID              int64     `json:"mal_id"`
-	URL                string    `json:"url"`
-	ImageURL           string    `json:"image_url"`
-	TrailerURL         string    `json:"trailer_url"`
-	Title              string    `json:"title"`
-	TitleEnglish       string    `json:"title_english"`
-	TitleJapanese      string    `json:"title_japanese"`
-	TitleSynonyms      []string  `json:"title_synonyms"`
-	Type               string    `json:"type"`
-	Source             string    `json:"source"`
-	Episodes           int64     `json:"episodes"`
-	Status             string    `json:"status"`
-	Airing             bool      `json:"airing"`
-	Aired              Aired     `json:"aired"`
-	Duration           string    `json:"duration"`
-	Rating             string    `json:"rating"`
-	Score              float64   `json:"score"`
-	ScoredBy           int64     `json:"scored_by"`
-	Rank               int64     `json:"rank"`
-	Popularity         int64     `json:"popularity"`
-	Members            int64     `json:"members"`
-	Favorites          int64     `json:"favorites"`
-	Synopsis           string    `json:"synopsis"`
-	Background         string    `json:"background"`
-	Premiered          string    `json:"premiered"`
-	Broadcast          string    `json:"broadcast"`
-	Related            Related   `json:"related"`
-	Producers          []MALItem `json:"producers"`
-	Licensors          []MALItem `json:"licensors"`
-	Studios            []MALItem `json:"studios"`
-	Genres             []MALItem `json:"genres"`
-	OpeningThemes      []string  `json:"opening_themes"`
-	EndingThemes       []string  `json:"ending_themes"`
+	RequestHash        string                `json:"request_hash"`
+	RequestCached      bool                  `json:"request_cached"`
+	RequestCacheExpiry int64                 `json:"request_cache_expiry"`
+	MalID              int64                 `json:"mal_id"`
+	URL                string                `json:"url"`
+	ImageURL           string                `json:"image_url"`
+	TrailerURL         string                `json:"trailer_url"`
+	Title              string                `json:"title"`
+	TitleEnglish       string                `json:"title_english"`
+	TitleJapanese      string                `json:"title_japanese"`
+	TitleSynonyms      []string              `json:"title_synonyms"`
+	Type               string                `json:"type"`
+	Source             string                `json:"source"`
+	Episodes           int64                 `json:"episodes"`
+	Status             string                `json:"status"`
+	Airing             bool                  `json:"airing"`
+	Aired              Aired                 `json:"aired"`
+	Duration           string                `json:"duration"`
+	Rating             string                `json:"rating"`
+	Score              float64               `json:"score"`
+	ScoredBy           int64                 `json:"scored_by"`
+	Rank               int64                 `json:"rank"`
+	Popularity         int64                 `json:"popularity"`
+	Members            int64                 `json:"members"`
+	Favorites          int64                 `json:"favorites"`
+	Synopsis           string                `json:"synopsis"`
+	Background         string                `json:"background"`
+	Premiered          string                `json:"premiered"`
+	Broadcast          string                `json:"broadcast"`
+	Related            Related               `json:"related"`
+	Producers          []common.TypedMALItem `json:"producers"`
+	Licensors          []common.TypedMALItem `json:"licensors"`
+	Studios            []common.TypedMALItem `json:"studios"`
+	Genres             []common.TypedMALItem `json:"genres"`
+	OpeningThemes      []string              `json:"opening_themes"`
+	EndingThemes       []string              `json:"ending_themes"`
 }
 
 type Aired struct {
@@ -79,25 +80,10 @@ type Date struct {
 	Year  int64 `json:"year"`
 }
 
-type MALItem struct {
-	MalID int64  `json:"mal_id"`
-	Type  Type   `json:"type"`
-	Name  string `json:"name"`
-	URL   string `json:"url"`
-}
-
-func (r MALItem) GetID() int64 {
-	return r.MalID
-}
-
-func (r MALItem) GetType() string {
-	return r.Type
-}
-
 type Related struct {
-	Adaptation []MALItem `json:"Adaptation"`
-	SideStory  []MALItem `json:"Side story"`
-	Summary    []MALItem `json:"Summary"`
+	Adaptation []common.TypedMALItem `json:"Adaptation"`
+	SideStory  []common.TypedMALItem `json:"Side story"`
+	Summary    []common.TypedMALItem `json:"Summary"`
 }
 
 //noinspection ALL
@@ -106,10 +92,10 @@ const (
 	TAnime Type = "anime"
 )
 
-func (r Anime) GetID() int64 {
+func (r Anime) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Anime) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }

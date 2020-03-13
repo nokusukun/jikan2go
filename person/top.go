@@ -1,13 +1,12 @@
 package person
 
 import (
-	"github.com/imroc/req"
-
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetTop(page int) (Top, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/top/people/%v", page))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/top/people/%v", page))
 	if err != nil {
 		return Top{}, err
 	}
@@ -36,10 +35,10 @@ type TopElement struct {
 	Birthday  string  `json:"birthday"`
 }
 
-func (r TopElement) GetID() int64 {
+func (r TopElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r TopElement) GetType() string {
-	return "person"
+	return mal_types.Person
 }

@@ -1,13 +1,11 @@
 package common
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/utils"
 )
 
-func GetForum(m MALItem) (Forum, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/%v/%v/forum", m.GetType(), m.GetID()))
+func GetForum(item MALItem) (Forum, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/%v/%v/forum", item.GetType(), item.GetID()))
 	if err != nil {
 		return Forum{}, err
 	}

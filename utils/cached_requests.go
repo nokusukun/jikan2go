@@ -26,7 +26,9 @@ func (c *CachedRequest) ToJSON(i interface{}) error {
 }
 
 func hash(s string) string {
-	return "j2gc-" + hex.EncodeToString(sha1.New().Sum([]byte(s)))
+	x := sha1.New()
+	x.Write([]byte(s))
+	return "j2gc-" + hex.EncodeToString(x.Sum(nil))
 }
 
 func cacheExists(reqHash string) bool {

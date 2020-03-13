@@ -5,6 +5,7 @@ import (
 	"github.com/imroc/req"
 
 	"github.com/nokusukun/jikan2go/anime"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -48,12 +49,12 @@ type AnimeElement struct {
 	Kids        bool      `json:"kids"`
 }
 
-func (r AnimeElement) GetID() int64 {
+func (r AnimeElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r AnimeElement) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }
 
 type Genre struct {
@@ -63,7 +64,7 @@ type Genre struct {
 	URL   string `json:"url"`
 }
 
-func (r Genre) GetID() int64 {
+func (r Genre) GetID() interface{} {
 	return r.MalID
 }
 
@@ -78,12 +79,12 @@ type Studio struct {
 	URL   string `json:"url"`
 }
 
-func (r Studio) GetID() int64 {
+func (r Studio) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Studio) GetType() string {
-	return "studio"
+	return mal_types.Producer
 }
 
 type Source string

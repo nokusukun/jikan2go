@@ -1,13 +1,12 @@
 package character
 
 import (
-	"github.com/imroc/req"
-
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
 func GetTop(page int) (Top, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/top/people/%v", page))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/top/people/%v", page))
 	if err != nil {
 		return Top{}, err
 	}
@@ -37,12 +36,12 @@ type TopElement struct {
 	ImageURL     string    `json:"image_url"`
 }
 
-func (r TopElement) GetID() int64 {
+func (r TopElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r TopElement) GetType() string {
-	return "character"
+	return mal_types.Character
 }
 
 type Ography struct {
@@ -52,7 +51,7 @@ type Ography struct {
 	URL   string `json:"url"`
 }
 
-func (r Ography) GetID() int64 {
+func (r Ography) GetID() interface{} {
 	return r.MalID
 }
 

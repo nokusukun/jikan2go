@@ -2,6 +2,7 @@ package manga
 
 import (
 	"encoding/json"
+	"log"
 
 	"github.com/imroc/req"
 
@@ -43,8 +44,10 @@ type Query struct {
 func (q *Query) ToParam() req.Param {
 	qbytes, _ := json.Marshal(q)
 	var reqParam req.Param
-	_ = json.Unmarshal(qbytes, &reqParam)
-	//fmt.Printf("Parameters: %+v", reqParam)
+	err := json.Unmarshal(qbytes, &reqParam)
+	if err != nil {
+		log.Printf("failed to paramaterize %+v", q)
+	}
 	return reqParam
 }
 

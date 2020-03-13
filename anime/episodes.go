@@ -5,8 +5,8 @@ import (
 	"github.com/nokusukun/jikan2go/utils"
 )
 
-func GetEpisodes(m common.MALItem) (Episodes, error) {
-	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/episodes", m.GetID()))
+func GetEpisodes(anime common.MALItem) (Episodes, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/episodes", anime.GetID()))
 	if err != nil {
 		return Episodes{}, err
 	}

@@ -1,8 +1,6 @@
 package season
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -20,7 +18,7 @@ const (
 )
 
 func GetSchedule(day Day) (Schedule, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/schedule/%v", day))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/schedule/%v", day))
 	if err != nil {
 		return Schedule{}, err
 	}

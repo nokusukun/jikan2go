@@ -2,11 +2,12 @@ package anime
 
 import (
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
-func GetCharacterStaff(m common.MALItem) (CharacterStaff, error) {
-	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/characters_staff", m.GetID()))
+func GetCharacterStaff(anime common.MALItem) (CharacterStaff, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/characters_staff", anime.GetID()))
 	if err != nil {
 		return CharacterStaff{}, err
 	}
@@ -58,18 +59,18 @@ const (
 	Japanese Language = "Japanese"
 )
 
-func (r Character) GetID() int64 {
+func (r Character) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Character) GetType() string {
-	return "character"
+	return mal_types.Character
 }
 
-func (r Staff) GetID() int64 {
+func (r Staff) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Staff) GetType() string {
-	return "person"
+	return mal_types.Person
 }

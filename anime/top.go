@@ -1,6 +1,7 @@
 package anime
 
 import (
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -51,10 +52,10 @@ type TopElement struct {
 	Score     float64 `json:"score"`
 }
 
-func (r TopElement) GetID() int64 {
+func (r TopElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r TopElement) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }

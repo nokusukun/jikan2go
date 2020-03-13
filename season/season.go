@@ -2,10 +2,9 @@
 package season
 
 import (
-	"github.com/imroc/req"
-
 	"github.com/nokusukun/jikan2go/anime"
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -19,7 +18,7 @@ const (
 )
 
 func GetSeasonLater() (Season, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/season/later"))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/season/later"))
 	if err != nil {
 		return Season{}, err
 	}
@@ -31,7 +30,7 @@ func GetSeasonLater() (Season, error) {
 }
 
 func GetSeason(season S, year int) (Season, error) {
-	request, err := req.Get(utils.Config.AppendAPIf("/season/%v/%v", year, season))
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/season/%v/%v", year, season))
 	if err != nil {
 		return Season{}, err
 	}
@@ -71,12 +70,12 @@ type AnimeElement struct {
 	Continuing  bool           `json:"continuing"`
 }
 
-func (r AnimeElement) GetID() int64 {
+func (r AnimeElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r AnimeElement) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }
 
 type Source string

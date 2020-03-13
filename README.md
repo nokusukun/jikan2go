@@ -8,7 +8,6 @@ A more go-like library for [Jikan](https://jikan.moe/).
 ```
 $ go get github.com/nokusukun/jikan2go
 ```
-Word of warning: This API doesn't do rate limiting yet.
 
 ## Usage
 
@@ -38,6 +37,15 @@ func init()  {
 ***Note: Make sure to remove the trailing slash when specifying a new API endpoint.***
 #### Note on caching
 While the library maintains a cache, it also respects [Jikan's ETag headers.](https://jikan.docs.apiary.io/#introduction/cache-validation)
+
+---
+All of the methods accepts anything that implements the `MALItem` interface and almost all of the 
+structs in this package implements the `MALItem` interface.
+
+This means you can pass a `common.AnimeItem` or anything that is roughly anime related to `anime.GetAnime` or all of it's package's methods.
+
+No type assertions are being checked (for now) when passing a struct in order to facilitate more freedom.
+
 
 ### Anime/Manga
 #### pkg.go.dev Documentation
@@ -78,8 +86,8 @@ func main() {
     fmt.Printf("Made in Abyss Description\n\n%v", mia.Synopsis)
 }
 ```
-Output
 ```
+Output:
 Title: Made in Abyss
 Link: https://myanimelist.net/anime/34599/Made_in_Abyss
 Shinsekai yori is recommended by 22 users
@@ -96,6 +104,16 @@ sought to solve these mysteries of the Abyss, fearlessly descending into its dar
 ***Note: The struct returned by anime.Search does not include the full canonical data, in this case, just feed the
     search result to anime.GetAnime***
 ```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/nokusukun/jikan2go/anime"
+    "github.com/nokusukun/jikan2go/manga"
+)
+
+
 func main() {
     result, _ := anime.Search(anime.Query{Q:"made in abyss"})
     firstResult := result.Results[0]
@@ -108,8 +126,8 @@ func main() {
     fmt.Println("Made in Abyss Author: ", miaManga.Authors[0].Name)
 }
 ```
-Output
 ```
+Output:
 Title: Made in Abyss
 Link: https://myanimelist.net/anime/34599/Made_in_Abyss
 Made in Abyss Author:  Tsukushi, Akihito
@@ -149,8 +167,8 @@ func main() {
     fmt.Println(news.Articles[0].URL)
 }
 ```
-Output
 ```
+Output:
 Title: Made in Abyss
 Link: https://myanimelist.net/anime/34599/Made_in_Abyss
 Members: 614368
@@ -188,8 +206,8 @@ func main() {
     }
 }
 ```
-Output
 ```
+Output:
 Title: Dr. Stone
 Rating: 8.46
 ---
@@ -205,25 +223,45 @@ Rating: 7.31
 Title: Arifureta Shokugyou de Sekai Saikyou
 Rating: 6.52
 ---
+```
 
+### Users
+```go
+func main() {
+    naux, err := GetUser(User{Username: "naux"})
+    assert.Nil(t, err)
+
+    assert.NotEqual(t, naux.Username, "")
+    fmt.Println(naux.UserID, naux.Username)
+    fmt.Println(naux.About)
+}
+```
+```
+Output:
+4435579 Naux
+24y/o Asian that looks...
+```
+
+### Clubs
+```go
+func main() {
+    club, _ := GetClub(Club{MalID:1})
+    fmt.Println(club.Title)
+
+    members, _ := GetMembers(club, 1)
+    fmt.Println("Members:", len(members.Members))
+}
+```
+```
+Output:
+Cowboy Bebop
+Members: 36
 ```
 
 ## Integration Status
 * Package Testing
     * Working On
-        * anime/anime
-    * TBI
-        * anime/character_staff
-        * anime/episodes
-        * anime/recommendations
-        * anime/search
-        * anime/videos
-        * character/character
-        * common/genre
-        * common/news
-        * common/pictures
-        * common/reviews
-        * common/stats
+        * all of them
 * Common
     * Implemented
         * review
@@ -268,9 +306,11 @@ Rating: 6.52
 * Genre
 * Producer
 * Magazine
+* User
+* Club
 
 ### To Be implemented
 * ~~Request Caching~~
-* User
-* Club
+* ~~User~~
+* ~~Club~~
 * Meta

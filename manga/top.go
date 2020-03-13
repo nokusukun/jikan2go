@@ -1,6 +1,7 @@
 package manga
 
 import (
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -51,12 +52,12 @@ type TopElement struct {
 	ImageURL  string  `json:"image_url"`
 }
 
-func (r TopElement) GetID() int64 {
+func (r TopElement) GetID() interface{} {
 	return r.MalID
 }
 
 func (r TopElement) GetType() string {
-	return "manga"
+	return mal_types.Manga
 }
 
 // manga novels oneshots doujin manhwa manhua

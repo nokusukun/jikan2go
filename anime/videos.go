@@ -5,8 +5,8 @@ import (
 	"github.com/nokusukun/jikan2go/utils"
 )
 
-func GetVideos(m common.MALItem) (Videos, error) {
-	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/videos", m.GetID()))
+func GetVideos(anime common.MALItem) (Videos, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/videos", anime.GetID()))
 	if err != nil {
 		return Videos{}, err
 	}

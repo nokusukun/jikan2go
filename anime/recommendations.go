@@ -5,8 +5,8 @@ import (
 	"github.com/nokusukun/jikan2go/utils"
 )
 
-func GetRecommendations(m common.MALItem) (Recommendations, error) {
-	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/recommendations", m.GetID()))
+func GetRecommendations(anime common.MALItem) (Recommendations, error) {
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/anime/%v/recommendations", anime.GetID()))
 	if err != nil {
 		return Recommendations{}, err
 	}
@@ -33,10 +33,10 @@ type Recommendation struct {
 	RecommendationCount int64  `json:"recommendation_count"`
 }
 
-func (r Recommendation) GetID() int64 {
+func (r Recommendation) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Recommendation) GetType() string {
-	return "anime"
+	return mal_types.Anime
 }

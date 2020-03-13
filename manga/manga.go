@@ -3,6 +3,7 @@ package manga
 
 import (
 	"github.com/nokusukun/jikan2go/common"
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 
@@ -49,12 +50,12 @@ type Manga struct {
 	Serializations     []MALItem `json:"serializations"`
 }
 
-func (r Manga) GetID() int64 {
+func (r Manga) GetID() interface{} {
 	return r.MalID
 }
 
 func (r Manga) GetType() string {
-	return "manga"
+	return mal_types.Manga
 }
 
 type MALItem struct {
@@ -64,12 +65,12 @@ type MALItem struct {
 	URL   string `json:"url"`
 }
 
-func (r MALItem) GetID() int64 {
+func (r MALItem) GetID() interface{} {
 	return r.MalID
 }
 
 func (r MALItem) GetType() string {
-	return "person"
+	return mal_types.Person
 }
 
 type Published struct {

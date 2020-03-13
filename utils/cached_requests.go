@@ -112,12 +112,12 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 			return nil, fmt.Errorf("[%v] Failed to renew data: %v\n", requestHash, err)
 		}
 
-		log.Printf("[%v] Status Code: %v\n", requestHash, data.Response().StatusCode)
+		//log.Printf("[%v] Status Code: %v\n", requestHash, data.Response().StatusCode)
 		if data.Response().StatusCode == 304 {
 			log.Printf("[%v] Cached data is still synced with remote resource\n", requestHash)
 		}
 
-		log.Printf("[%v] New ETag: %v\n", requestHash, data.Response().Header.Get("ETag"))
+		//log.Printf("[%v] New ETag: %v\n", requestHash, data.Response().Header.Get("ETag"))
 
 		// If the server returns with 304, just refresh the cache with an updated expiry
 		if data.Response().StatusCode != 304 && data.Response().StatusCode == 200 {

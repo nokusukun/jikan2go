@@ -1,8 +1,19 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/nokusukun/jikan2go/anime"
 	"github.com/nokusukun/jikan2go/character"
+	_ "github.com/nokusukun/jikan2go/club"
+	_ "github.com/nokusukun/jikan2go/common"
+	_ "github.com/nokusukun/jikan2go/genre"
+	_ "github.com/nokusukun/jikan2go/magazine"
+	_ "github.com/nokusukun/jikan2go/manga"
+	_ "github.com/nokusukun/jikan2go/person"
+	_ "github.com/nokusukun/jikan2go/season"
+	_ "github.com/nokusukun/jikan2go/studio"
+	_ "github.com/nokusukun/jikan2go/user"
 )
 
 func panicOn(err error) {
@@ -25,5 +36,5 @@ func main() {
 
 	nanachi, err := character.GetCharacter(miaStaff.Characters[0])
 	panicOn(err)
-
+	fmt.Println(nanachi.NameKanji)
 }

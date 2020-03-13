@@ -6,6 +6,7 @@ import (
 
 	"github.com/imroc/req"
 
+	"github.com/nokusukun/jikan2go/mal_types"
 	"github.com/nokusukun/jikan2go/utils"
 )
 

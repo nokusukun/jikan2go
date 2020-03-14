@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/nokusukun/Jikan2Go/branch/master/graph/badge.svg)](https://codecov.io/gh/nokusukun/Jikan2Go)
 
-A more go-like library for [Jikan](https://jikan.moe/).
+A comfy, go-like library for [Jikan](https://jikan.moe/), the open source MyAnimeList API.
 
 ### Download
 ```

@@ -61,6 +61,15 @@ func readCache(reqhash string) (*CachedRequest, error) {
 	return cr, err
 }
 
+// LifetimeContext changes the percieved cache lifetime.
+// Use a lifetime of time.Second to immediately request new data from the server.
+func LifetimeContext(lifetime time.Duration, function func()) {
+	oldLifetime := Config.CacheLifetime
+	Config.CacheLifetime = lifetime
+	function()
+	Config.CacheLifetime = oldLifetime
+}
+
 func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 	ttl := time.Now().Sub(lastUncachedRequest)
 	if ttl < time.Millisecond*500 {

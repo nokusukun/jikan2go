@@ -20,6 +20,12 @@ func TestGetAnimeList(t *testing.T) {
 	naux, err := GetUser(User{Username: "naux"})
 	assert.Nil(t, err)
 
+	_, err = GetUser(User{Username: "nekomata1037"})
+	assert.Nil(t, err)
+
+	_, err = GetUser(User{Username: "naux"})
+	assert.Nil(t, err)
+
 	nauxlist, err := GetAnimeList(naux, AllList)
 	assert.Nil(t, err)
 

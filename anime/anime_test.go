@@ -44,6 +44,42 @@ func TestSearch(t *testing.T) {
 		})
 	assert.Nil(t, err)
 	assert.Len(t, result.Results, 1, result)
+	mia := result.Results[0]
+
+	fmt.Println("Title:", result.Results[0].Title)
+	fmt.Println("Request Cached?", result.RequestCached)
+
+	result, err = Search(
+		Query{Q: "Full Metal Alchemist",
+			Limit: 1,
+			Genre: GenreAdventure,
+		})
+	assert.Nil(t, err)
+	assert.Len(t, result.Results, 1, result)
+
+	fmt.Println("Title:", result.Results[0].Title)
+	fmt.Println("Request Cached?", result.RequestCached)
+
+	result, err = Search(
+		Query{Q: "Naruto",
+			Limit: 1,
+			Genre: GenreAdventure,
+		})
+	assert.Nil(t, err)
+	assert.Len(t, result.Results, 1, result)
+
+	fmt.Println("Title:", result.Results[0].Title)
+	fmt.Println("Request Cached?", result.RequestCached)
+
+	result, err = Search(
+		Query{Q: "made in abyss",
+			Limit: 1,
+			Genre: GenreAdventure,
+		})
+	assert.Nil(t, err)
+	assert.Len(t, result.Results, 1, result)
+
+	assert.Equal(t, result.Results[0].MalID, mia.MalID)
 
 	fmt.Println("Title:", result.Results[0].Title)
 	fmt.Println("Request Cached?", result.RequestCached)

@@ -15,6 +15,8 @@ import (
 	"github.com/imroc/req"
 )
 
+var lastUncachedRequest = time.Now()
+
 type CachedRequest struct {
 	Data        []byte
 	RequestedOn time.Time
@@ -60,7 +62,14 @@ func readCache(reqhash string) (*CachedRequest, error) {
 }
 
 func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
-	requestHash := hash(strings.ReplaceAll(url, Config.API, ""))
+	ttl := time.Now().Sub(lastUncachedRequest)
+	if ttl < time.Millisecond*500 {
+		sleepTime := (time.Millisecond * 500) - ttl
+		log.Println("Sleeping for", sleepTime)
+		time.Sleep(sleepTime)
+	}
+
+	requestHash := hash(strings.ReplaceAll(url, Config.API, "") + fmt.Sprintf("%v", v))
 
 	cr := &CachedRequest{}
 	if !cacheExists(requestHash) {
@@ -88,6 +97,11 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 		cr.Data = data.Bytes()
 		cr.RequestedOn = time.Now()
 		cr.ETag = data.Response().Header.Get("ETag")
+
+		if strings.Contains(string(cr.Data), "\"request_cached\": false") {
+			log.Println("uncached request, setting timeout for next call")
+			lastUncachedRequest = time.Now()
+		}
 
 		err = writeCache(requestHash, cr)
 		if err != nil {
@@ -125,6 +139,10 @@ func CachedReqGet(url string, v ...interface{}) (*CachedRequest, error) {
 			cache.ETag = data.Response().Header.Get("ETag")
 		}
 		cache.RequestedOn = time.Now()
+		if strings.Contains(string(cr.Data), "\"request_cached\": false") {
+			log.Println("uncached request, setting timeout for next call")
+			lastUncachedRequest = time.Now()
+		}
 
 		// Write the cache
 		err = writeCache(requestHash, cache)

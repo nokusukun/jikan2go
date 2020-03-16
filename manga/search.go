@@ -14,7 +14,7 @@ func Search(q Query) (SearchResult, error) {
 		q.Page = 1
 	}
 
-	request, err := req.Get(utils.Config.AppendAPIf("/search/manga"), q.ToParam())
+	request, err := utils.CachedReqGet(utils.Config.AppendAPIf("/search/manga"), q.ToParam())
 	if err != nil {
 		return SearchResult{}, err
 	}

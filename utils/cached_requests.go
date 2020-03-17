@@ -16,6 +16,7 @@ import (
 )
 
 var lastUncachedRequest = time.Now()
+var memoryCache = map[string]*CachedRequest{}
 
 type CachedRequest struct {
 	Data        []byte
@@ -25,6 +26,10 @@ type CachedRequest struct {
 
 func (c *CachedRequest) ToJSON(i interface{}) error {
 	return json.Unmarshal(c.Data, i)
+}
+
+func FlushMemoryCache() {
+	memoryCache = map[string]*CachedRequest{}
 }
 
 func hash(s string) string {
@@ -39,6 +44,23 @@ func cacheExists(reqHash string) bool {
 }
 
 func writeCache(reqHash string, request *CachedRequest) error {
+	if Config.UseMemoryCache {
+		memoryCache[reqHash] = request
+
+		// Try to write the cache in the background
+		go func() {
+			b, err := json.Marshal(request)
+			if err != nil {
+				log.Println("Failed to marshal cache: ", err)
+			}
+			err = ioutil.WriteFile(path.Join(Config.CacheDir, reqHash), b, os.ModePerm)
+			if err != nil {
+				log.Println("Failed to write to cache: ", err)
+			}
+		}()
+		return nil
+	}
+
 	b, err := json.Marshal(request)
 	if err != nil {
 		return err
@@ -47,6 +69,11 @@ func writeCache(reqHash string, request *CachedRequest) error {
 }
 
 func readCache(reqhash string) (*CachedRequest, error) {
+	// If the request is in the memorycache and if it's enabled, return. Else, try to load it locally.
+	if val, ok := memoryCache[reqhash]; ok && Config.UseMemoryCache {
+		return val, nil
+	}
+
 	if !cacheExists(reqhash) {
 		return nil, fmt.Errorf("Cache file not found")
 	}
@@ -58,7 +85,14 @@ func readCache(reqhash string) (*CachedRequest, error) {
 	}
 
 	err = json.Unmarshal(b, cr)
-	return cr, err
+	if err != nil {
+		return nil, err
+	}
+
+	if Config.UseMemoryCache {
+		memoryCache[reqhash] = cr
+	}
+	return cr, nil
 }
 
 // LifetimeContext changes the percieved cache lifetime.
